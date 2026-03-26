@@ -1,0 +1,23 @@
+<form action="#" method="post" id="meuFormulario">
+  <h2>Conta</h2>
+
+  <div class="form-group">
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+  </div>
+
+  <div class="form-group checkbox">
+    <input type="checkbox" id="termos" name="termos" required>
+    <label for="termos">Aceito os termos e condições</label>
+  </div>
+
+  <div id="btns-login">
+    <button type="button" class="btn-submit" onclick="login()">Login</button>
+    <button type="button" class="btn-submit" onclick="signup()">Criar conta</button>
+  </div>
+</form>

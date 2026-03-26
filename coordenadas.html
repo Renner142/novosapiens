@@ -1,0 +1,27 @@
+<form action="#" method="post" id="meuFormulario">
+  <h2>Conta</h2>
+
+  <div class="form-group">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+  </div>
+
+  <div class="form-group">
+    <label for="coordinates">Coordenadas:</label>
+    <input type="text" id="coordinates" name="coordinates" placeholder="Digite suas coordenadas" required>
+  </div>
+
+  <div class="form-group checkbox">
+    <input type="checkbox" id="termos" name="termos" required>
+    <label for="termos">Aceito os termos e condições</label>
+  </div>
+
+  <div id="btns-login">
+    <button type="button" class="btn-submit" onclick="login()">Enviar</button>
+  </div>
+</form>

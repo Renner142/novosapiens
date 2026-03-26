@@ -1,0 +1,573 @@
+:root {
+  --primary: #118f50;
+  --secondary: #6bd45d;
+  --text-dark: #333;
+  --bg-light: #b3e4a0;
+  --white: #fff;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#topo {
+  background: var(--primary);
+  color: var(--white);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 5%;
+  top: 0;
+  z-index: 1000;
+  position: sticky;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* LOGO */
+#novosapiens {
+  height: 70px;
+  object-fit: contain;
+}
+
+/* NAV */
+#main-nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+#main-nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  transition: 0.3s ease;
+}
+
+/* hover */
+#main-nav a:hover {
+  background: var(--secondary);
+  color: var(--text-dark);
+}
+
+/* link ativo */
+#main-nav a.current {
+  background: var(--white);
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* ÁREA DE LOGIN */
+#conta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* login */
+#login-a {
+  background: var(--white);
+  color: var(--primary);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+#login-a:hover {
+  background: var(--secondary);
+  color: var(--text-dark);
+}
+
+/* ÁREA LOGADA */
+#user-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 999px; /* pill style */
+
+  backdrop-filter: blur(6px);
+}
+
+/* NOME DO USUÁRIO */
+#user-name {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+/* BOTÃO SAIR */
+#logout-a {
+  background: var(--white);
+  color: var(--primary);
+  text-decoration: none;
+
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+
+  transition: 0.3s ease;
+}
+
+/* HOVER BONITO */
+#logout-a:hover {
+  background: #ff4d4d;
+  color: white;
+}
+
+
+
+
+
+
+/* FUNDO FIXO */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background: url('img/fotooficial.jpeg') center/cover no-repeat;
+  z-index: -1;
+}
+
+/* CONTEÚDO PRINCIPAL (NOVO SAPIENS) */
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.4); /* escurece pra dar contraste */
+}
+
+/* TÍTULO */
+.title {
+  font-size: 80px;
+  margin: 0;
+  line-height: 1;
+}
+
+.novo {
+  font-weight: 300;
+}
+
+.sapiens {
+  font-weight: 800;
+}
+
+/* SUBTEXTO */
+.dispersao {
+  font-size: 20px;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+#sobre-nos {
+  background: var(--bg-light);
+  padding: 80px 5%; /* menos apertado nas laterais */
+  position: relative;
+  border-radius: 0; /* tira o efeito de caixinha */
+  z-index: 1;
+}
+
+/* Container principal */
+.texto-fundo-branco {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+
+  width: 100%;
+  max-width: 1400px; /* mais largo */
+  margin: 0 auto;
+
+  background-color: var(--bg-light);
+}
+
+/* Imagem */
+.imagem-sobre {
+  width: 50%; /* maior */
+  max-width: 600px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Texto */
+.texto-fundo-branco p {
+  width: 50%;
+  font-size: 20px; /* texto maior */
+  line-height: 1.8;
+  color: #333;
+}
+
+
+
+
+
+
+/* HERO (título topo) */
+.content2 {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('img/fotosementes.jpeg') center/cover no-repeat;
+
+  text-align: center;
+  color: var(--white);
+}
+
+.title2 {
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: bold;
+}
+
+.projeto {
+  letter-spacing: 2px;
+}
+
+/* SEÇÃO */
+#sobre-nos {
+  background: var(--bg-light);
+  padding: 80px 5%;
+}
+
+/* CONTAINER */
+.texto-fundo-branco2 {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* BLOCOS (cada texto + imagem) */
+.texto-fundo-branco2 p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: var(--text-dark);
+  text-align: justify;
+}
+
+/* IMAGENS */
+.texto-fundo-branco2 img {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  border-radius: 16px;
+  display: block;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+/* hover leve */
+.texto-fundo-branco2 img:hover {
+  transform: scale(1.02);
+}
+
+
+
+
+
+
+
+
+
+
+/* BOTÃO DE ÁUDIO */
+.btn-audio {
+  background: var(--primary);
+  color: var(--white);
+
+  border: none;
+  border-radius: 50px;
+
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ÍCONE (emoji ou SVG) */
+.btn-audio::before {
+  content: "🔊";
+  font-size: 16px;
+}
+
+/* HOVER */
+.btn-audio:hover {
+  background: var(--secondary);
+  color: var(--text-dark);
+  transform: translateY(-2px);
+}
+
+/* CLICK */
+.btn-audio:active {
+  transform: scale(0.95);
+}
+
+footer {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 3rem 1.4rem 1.4rem 1.4rem;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-left, .footer-right {
+  flex: 1 1 300px;
+  margin: 10px;
+}
+
+.footer-left i, .footer-right i {
+  margin-right: 0.8rem;
+  color: #ffffff;
+}
+
+.footer-left a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-right h4 {
+  margin-bottom: 0.8rem;
+}
+
+.footer-icons a {
+  display: inline-block;
+  margin-right: 0.8rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.footer-icons a:hover {
+  color: #ffffff;
+}
+
+
+
+
+
+header #novosapiens{
+  height: 11rem;
+  
+}
+
+/* CONTAINER DO FORM */
+#meuFormulario {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 30px;
+
+  background: var(--white);
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  font-family: Arial, sans-serif;
+}
+
+/* TÍTULO */
+#meuFormulario h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--primary);
+}
+
+/* GRUPOS */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABEL */
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* INPUTS */
+.form-group input {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+/* FOCUS */
+.form-group input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17, 143, 80, 0.2);
+}
+
+/* CHECKBOX */
+.form-group.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group.checkbox label {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* BOTÕES */
+#btns-login {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* BOTÃO BASE */
+.btn-submit {
+  flex: 1;
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+/* LOGIN */
+.btn-submit:first-child {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* CRIAR CONTA */
+.btn-submit:last-child {
+  background: var(--secondary);
+  color: var(--text-dark);
+}
+
+/* HOVER */
+.btn-submit:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+#topo {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  #novosapiens {
+    height: 60px;
+  }
+
+  #main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    order: -1;
+  }
+
+  #main-nav a {
+    font-size: 0.9rem;
+  }
+
+  #conta {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  #sobre-nos {
+    padding: 50px 5%;
+  }
+
+  .texto-fundo-branco {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .imagem-sobre,
+  .texto-fundo-branco p {
+    width: 100%;
+  }
+
+  .texto-fundo-branco p {
+    font-size: 16px;
+    text-align: justify;
+  }
+
+  #meuFormulario {
+    margin: 30px 15px;
+    padding: 20px;
+  }
+
+  #btns-login {
+    flex-direction: column;
+  }
+}

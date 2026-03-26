@@ -1,0 +1,159 @@
+
+
+
+
+
+coloquei já ta tudo certo
+
+
+
+
+
+
+
+
+
+
+
+linha 7, 85 e 118
+
+
+
+
+adicionar no script.js
+
+window.onload = async () => {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    console.log("Já logado:", user.email);
+  } else {
+    console.log("Não logado");
+  }
+};
+
+
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
+  'https://eglmqjoqmnipcfnhdcyl.supabase.co',
+  'sb_publishable_1mVT1wJ14LpEb7xYEoQmvA_fYna-o-Y'
+);
+
+async function signup() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password
+  });
+
+  if (error) {
+    alert(error.message);
+  } else {
+    alert('Conta criada! Verifica o email 📩');
+  }
+
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
+
+  if (error) alert(error.message);
+}
+
+async function login() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    alert(error.message);
+  } else {
+    alert('Logado com sucesso 🚀');
+    console.log(data);
+  }
+}
+
+async function getUser() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+  console.log(user);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+substituir o cadastro.html
+
+
+<form action="#" method="post" id="meuFormulario">
+  <h2>Conta</h2>
+
+  <div class="form-group">
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+  </div>
+
+  <div class="form-group checkbox">
+    <input type="checkbox" id="termos" name="termos" required>
+    <label for="termos">Aceito os termos e condições</label>
+  </div>
+
+  <div id="btns-login">
+    <button type="button" class="btn-submit" onclick="login()">Login</button>
+    <button type="button" class="btn-submit" onclick="signup()">Criar conta</button>
+  </div>
+</form>
+
+
+
+
+
+
+
+ajeitar no fim do css
+
+
+
+#btns-login {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  gap: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
