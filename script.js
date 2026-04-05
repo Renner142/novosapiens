@@ -131,6 +131,10 @@ window.onload = async () => {
       loginA.style.display = "none"
       userArea.style.display = "block"
       userName.textContent = session.user.email
+
+      loadPage('sobrenos.html');
+
+      
     } else {
       console.log("NÃO LOGADO")
       loginA.style.display = "block"
@@ -201,7 +205,6 @@ async function login() {
   } else {
     alert('Logado com sucesso 🚀');
     console.log(data);
-    loadPage('sobrenos.html');
   }
 }
 
