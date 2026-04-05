@@ -1,14 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", () => {
-    const topo = document.getElementById('topo');
-    const contentDiv = document.getElementById('content');
-
-    if (!topo || !contentDiv) {
-      console.error("ERRO: Não achei o id='topo' ou o id='content' no HTML!");
-      return;
-    }
-
-    async function loadPage(url) {
+async function loadPage(url) {
       console.log("Tentando carregar:", url);
       try {
         const response = await fetch(url);
@@ -21,6 +12,20 @@ document.addEventListener("DOMContentLoaded", () => {
         contentDiv.innerHTML = "<p style='color:red'>Erro ao carregar: " + url + ". Verifique se o nome do arquivo está certo.</p>";
       }
     }
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const topo = document.getElementById('topo');
+    const contentDiv = document.getElementById('content');
+
+    if (!topo || !contentDiv) {
+      console.error("ERRO: Não achei o id='topo' ou o id='content' no HTML!");
+      return;
+    }
+
+    
 
     // Carrega a página inicial
     loadPage('sobrenos.html');
