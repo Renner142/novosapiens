@@ -196,6 +196,7 @@ async function login() {
   } else {
     alert('Logado com sucesso 🚀');
     console.log(data);
+    loadPage('sobrenos.html');
   }
 }
 
