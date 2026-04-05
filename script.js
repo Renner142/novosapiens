@@ -94,8 +94,8 @@ function falarTexto(texto) {
 const { createClient } = supabase;
 
 const supabaseClient = createClient(
-  'https://eglmqjoqmnipcfnhdcyl.supabase.co',
-  'sb_publishable_1mVT1wJ14LpEb7xYEoQmvA_fYna-o-Y'
+  'https://vnclvuluqpgcbbrpzwqw.supabase.co',
+  'sb_publishable_unHIUHkfh5ojHtX3fInLxA_JQPLAkG4'
 );
 
 
