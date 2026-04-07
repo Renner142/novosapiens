@@ -1,5 +1,8 @@
 
 async function loadPage(url) {
+      const topo = document.getElementById('topo');
+    const contentDiv = document.getElementById('content');
+    
       console.log("Tentando carregar:", url);
       try {
         const response = await fetch(url);
@@ -133,7 +136,10 @@ window.onload = async () => {
       userName.textContent = session.user.email
 
       loadPage('sobrenos.html');
-
+      const links = document.querySelectorAll('#topo a');
+      links.forEach(link => link.classList.remove('current'));
+      const mainLink = document.querySelector('#topo a[data-link="sobrenos.html"]');
+      if (mainLink) mainLink.classList.add('current');
       
     } else {
       console.log("NÃO LOGADO")
