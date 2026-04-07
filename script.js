@@ -65,21 +65,31 @@ async function checarLogin() {
   const loginA = document.getElementById("login-a");
   const userArea = document.getElementById("user-area");
   const userName = document.getElementById("user-name");
+
+  // elementos do form
   const formArvore = document.getElementById('form-arvore');
   const msgLogin = document.getElementById('login-msg');
 
+  // Header sempre atualiza
   if (session?.user) {
     loginA.style.display = "none";
     userArea.style.display = "block";
     userName.textContent = session.user.email;
-    formArvore.style.display = 'block';
-    msgLogin.style.display = 'none';
   } else {
     loginA.style.display = "block";
     userArea.style.display = "none";
     userName.textContent = "";
-    formArvore.style.display = 'none';
-    msgLogin.style.display = 'block';
+  }
+
+  // Só mexe no form se ele existir na página
+  if (formArvore && msgLogin) {
+    if (session?.user) {
+      formArvore.style.display = 'block';
+      msgLogin.style.display = 'none';
+    } else {
+      formArvore.style.display = 'none';
+      msgLogin.style.display = 'block';
+    }
   }
 
   // Atualiza automaticamente quando loga/desloga
@@ -88,18 +98,23 @@ async function checarLogin() {
       loginA.style.display = "none";
       userArea.style.display = "block";
       userName.textContent = session.user.email;
-      formArvore.style.display = 'block';
-      msgLogin.style.display = 'none';
+
+      if (formArvore && msgLogin) {
+        formArvore.style.display = 'block';
+        msgLogin.style.display = 'none';
+      }
     } else {
       loginA.style.display = "block";
       userArea.style.display = "none";
       userName.textContent = "";
-      formArvore.style.display = 'none';
-      msgLogin.style.display = 'block';
+
+      if (formArvore && msgLogin) {
+        formArvore.style.display = 'none';
+        msgLogin.style.display = 'block';
+      }
     }
   });
 }
-
 
 // -------------------- SIGNUP --------------------
 async function signup() {
