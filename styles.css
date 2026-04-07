@@ -141,6 +141,53 @@ html, body {
 
 
 
+#login-msg {
+  max-width: 420px;                /* igual ao form */
+  margin: 80px auto;               /* centralizado horizontal, mais espaço em cima */
+  padding: 40px 30px;              /* mais gordinho, espaçamento maior */
+  
+  background: var(--white);        /* mesma cor do form */
+  border-radius: 20px;             /* cantos arredondados mais suaves */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* sombra mais marcante */
+  
+  font-family: Arial, sans-serif;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #333;                     /* texto escuro */
+  
+  display: none;                   /* escondido por padrão */
+  
+  /* Para garantir que fique bem centralizado verticalmente em páginas curtas */
+  position: relative;
+  top: 50px;
+}
+
+#login-msg span {
+  display: block;
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: goldenrod;
+}
+
+#login-msg a {
+  background: var(--primary);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  
+  transition: 0.3s ease;
+} 
+
+
+
+
+
+
+
+
 /* FUNDO FIXO */
 .background {
   position: fixed;
@@ -403,7 +450,7 @@ header #novosapiens{
 }
 
 /* CONTAINER DO FORM */
-#meuFormulario {
+.form-container {
   max-width: 420px;
   margin: 60px auto;
   padding: 30px;
@@ -416,7 +463,7 @@ header #novosapiens{
 }
 
 /* TÍTULO */
-#meuFormulario h2 {
+.form-container h2 {
   text-align: center;
   margin-bottom: 25px;
   color: var(--primary);
@@ -559,14 +606,5 @@ header #novosapiens{
   .texto-fundo-branco p {
     font-size: 16px;
     text-align: justify;
-  }
-
-  #meuFormulario {
-    margin: 30px 15px;
-    padding: 20px;
-  }
-
-  #btns-login {
-    flex-direction: column;
   }
 }
