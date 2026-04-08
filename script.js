@@ -1,16 +1,91 @@
-window.onload = async () => {
-  await checarLogin();  // Atualiza o estado de login ao carregar
-};
+// 1. Inicialização segura do Supabase (Verifica se já existe para não dar erro)
+if (typeof supabaseClient === 'undefined') {
+  var supabaseClient = supabase.createClient(
+    'https://vnclvuluqpgcbbrpzwqw.supabase.co',
+    'sb_publishable_unHIUHkfh5ojHtX3fInLxA_JQPLAkG4'
+  );
+}
 
+// 2. Variável global para o mapa
+let meuMapa = null;
 
+// 3. Centralizador de eventos de carregamento
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Sistema Inicializado");
+  checarLogin();
+  
+  // Só carrega a página inicial se o conteúdo estiver vazio (evita loops no SPA)
+  const contentDiv = document.getElementById('content');
+  if (contentDiv && contentDiv.innerHTML.trim() === "<h1>Carregando...</h1>") {
+      loadPage('sobrenos.html');
+  }
 
+  // Configuração dos links do Topo (Event Delegation)
+  const topo = document.getElementById('topo');
+  if (topo) {
+    topo.addEventListener('click', async (e) => {
+      const el = e.target.closest('a'); // Garante que pega o link mesmo clicando no ícone
+      if (el && el.dataset.link) {
+        e.preventDefault();
+        await loadPage(el.dataset.link);
+      }
+    });
+  }
+});
 
-// -------------------- SUPABASE --------------------
-const { createClient } = supabase;
-const supabaseClient = createClient(
-  'https://vnclvuluqpgcbbrpzwqw.supabase.co',
-  'sb_publishable_unHIUHkfh5ojHtX3fInLxA_JQPLAkG4'
-);
+// -------------------- FUNÇÃO DO MAPA --------------------
+async function inicializarMapa() {
+    setTimeout(async () => {
+        const container = document.getElementById('map');
+        if (!container) return;
+
+        if (meuMapa) {
+            meuMapa.remove();
+            meuMapa = null;
+        }
+
+        try {
+            // Inicializa o centro do mapa (Quixadá)
+            meuMapa = L.map('map').setView([-4.968, -39.006], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(meuMapa);
+            
+            // CHAMA A FUNÇÃO PARA CARREGAR OS PONTOS DO BANCO
+            await carregarPontosDoBanco();
+
+            setTimeout(() => { if(meuMapa) meuMapa.invalidateSize(); }, 300);
+        } catch (e) {
+            console.error("Erro ao iniciar mapa:", e);
+        }
+    }, 200);
+}
+
+async function carregarPontosDoBanco() {
+  try {
+    const { data, error } = await supabaseClient
+      .from('arvores_mapa') 
+      .select('*');
+
+    if (error) throw error;
+
+    data.forEach(ponto => {
+      // Como a View faz o trabalho pesado, aqui é só desenhar
+      if (ponto.lat && ponto.lng) {
+        L.marker([ponto.lat, ponto.lng]).addTo(meuMapa)
+        .bindPopup(`
+            <div style="font-family: sans-serif;">
+              <strong style="color: #118f50;">Coordenadas:</strong><br>
+              <b>Lat:</b> ${ponto.lat}<br>
+              <b>Lng:</b> ${ponto.lng}
+            </div>
+          `);
+      }
+    });
+
+    console.log(`Sucesso: ${data.length} pontos renderizados.`);
+  } catch (err) {
+    console.error("Erro no mapa:", err.message);
+  }
+}
 
 // -------------------- LOAD PAGE --------------------
 async function loadPage(url) {
@@ -23,6 +98,9 @@ async function loadPage(url) {
 
     const html = await response.text();
     contentDiv.innerHTML = html;
+    if (url === 'mapa.html') { 
+        inicializarMapa(); 
+    }
     checarLogin();
     
     // Atualiza links do topo após carregar
@@ -195,8 +273,8 @@ async function salvarArvore(event) {
     return partes[1] ? partes[1].length : 0;
   };
 
-  if (casasDecimais(latNum) < 6 || casasDecimais(lonNum) < 6) {
-    alert('Latitude e Longitude precisam ter pelo menos 6 casas decimais!');
+  if (casasDecimais(latNum) < 5 || casasDecimais(lonNum) < 5) {
+    alert('Latitude e Longitude precisam ter pelo menos 5 casas decimais!');
     return;
   }
 
@@ -206,3 +284,12 @@ async function salvarArvore(event) {
   if (error) { console.error(error); alert('Erro ao salvar a árvore 😢'); }
   else { alert('Árvore salva 🌱'); document.getElementById('form-arvore').reset(); }
 }
+
+
+
+
+
+
+
+
+
