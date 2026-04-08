@@ -187,7 +187,6 @@ html, body {
 
 
 
-
 /* FUNDO FIXO */
 .background {
   position: fixed;
@@ -208,7 +207,6 @@ html, body {
   justify-content: center;
   align-items: center;
 
-  color: white;
   text-align: center;
 
   background: rgba(0, 0, 0, 0.4); /* escurece pra dar contraste */
@@ -219,6 +217,7 @@ html, body {
   font-size: 80px;
   margin: 0;
   line-height: 1;
+  color: white;
 }
 
 .novo {
@@ -234,6 +233,7 @@ html, body {
   font-size: 20px;
   margin-top: 10px;
   letter-spacing: 2px;
+  color: rgb(67, 7, 19);
 }
 
 #sobre-nos {
