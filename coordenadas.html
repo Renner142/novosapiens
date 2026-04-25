@@ -27,23 +27,6 @@
   
   <script>
   // Solicitar localização automaticamente ao carregar a página
-  if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-          function(position) {
-              document.getElementById('latitude').value = position.coords.latitude;
-              document.getElementById('longitude').value = position.coords.longitude;
-          },
-          function(error) {
-              console.warn('Localização não disponível. Insira as coordenadas manualmente.');
-          },
-          {
-              enableHighAccuracy: true,
-              timeout: 10000,
-              maximumAge: 0
-          }
-          
-      );
-  }
   function obterLocalizacao() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
