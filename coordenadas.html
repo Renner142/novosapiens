@@ -1,23 +1,60 @@
 <div id="login-msg">
-  <span>Faça login para enviar coordenadas</span>
-  <a id="login-a" href="#" data-link="cadastro.html" onclick="loadPage('cadastro.html')">Login</a>
-</div>
-
-
-<form action="#" method="post" id="form-arvore" class="form-container" style="display: none;">
-  <h2>Coordenadas</h2>
-
-  <div class="form-group">
-    <label for="name">Nome:</label>
-    <input type="text" id="nome" placeholder="Digite seu nome (opcional)" required>
+    <span>Faça login para enviar coordenadas</span>
+    <a id="login-a" href="#" data-link="cadastro.html" onclick="loadPage('cadastro.html')">Login</a>
   </div>
-
-  <div class="form-group">
-    <label for="coordinates">Coordenadas: <br> Use pontos . (Ex: -12.34567, -45.67890)<br>(Latitude, Longitude) </label>
+  <button type="button" onclick="obterLocalizacao()" class="btn-location">
+    📍 Usar minha localização
+  </button>
+  
+  <form action="#" method="post" id="form-arvore" class="form-container" style="display: none;">
+    <h2>Coordenadas</h2>
+  
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input type="text" id="nome" placeholder="Digite seu nome (opcional)" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="coordinates">Coordenadas: <br> Use pontos . (Ex: -12.34567, -45.67890)<br>(Latitude, Longitude) </label>
       <input id="latitude" type="number" step="any" placeholder="Latitude (-12.34567)" required />
       <input id="longitude" type="number" step="any" placeholder="Longitude (-45.67890)" required />
-
-  <div id="btns-login">
-    <button type="submit" class="btn-submit" onclick="salvarArvore(event)">Enviar</button>
-  </div>
-</form>
+    </div>
+  
+    <div id="btns-login">
+      <button type="submit" class="btn-submit" onclick="salvarArvore(event)">Enviar</button>
+    </div>
+  </form>
+  
+  <script>
+  // Solicitar localização automaticamente ao carregar a página
+  if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+          function(position) {
+              document.getElementById('latitude').value = position.coords.latitude;
+              document.getElementById('longitude').value = position.coords.longitude;
+          },
+          function(error) {
+              console.warn('Localização não disponível. Insira as coordenadas manualmente.');
+          },
+          {
+              enableHighAccuracy: true,
+              timeout: 10000,
+              maximumAge: 0
+          }
+          
+      );
+  }
+  function obterLocalizacao() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                document.getElementById('latitude').value = position.coords.latitude;
+                document.getElementById('longitude').value = position.coords.longitude;
+            },
+            function(error) {
+                alert('Não foi possível obter sua localização');
+            }
+        );
+    }
+}
+  </script>
