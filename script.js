@@ -87,11 +87,32 @@ async function carregarPontosDoBanco() {
   }
 }
 
+function inicializarLocalizacao() {
+  if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+          function(position) {
+              // Tenta encontrar os campos no DOM
+              const latInput = document.getElementById('latitude');
+              const lonInput = document.getElementById('longitude');
+              
+              if (latInput && lonInput) {
+                  latInput.value = position.coords.latitude;
+                  lonInput.value = position.coords.longitude;
+              }
+          },
+          function(error) {
+              console.warn('Localização não disponível.');
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
+  }
+}
+
+
 // -------------------- LOAD PAGE --------------------
 async function loadPage(url) {
   const contentDiv = document.getElementById('content');
   console.log("Tentando carregar:", url);
-
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Arquivo não encontrado: " + url);
@@ -101,6 +122,9 @@ async function loadPage(url) {
     if (url === 'mapa.html') { 
         inicializarMapa(); 
     }
+    if (url === 'coordenadas.html') { 
+      inicializarLocalizacao();
+  }
     checarLogin();
     
     // Atualiza links do topo após carregar
@@ -114,6 +138,7 @@ async function loadPage(url) {
     contentDiv.innerHTML = `<p style='color:red'>Erro ao carregar: ${url}. Verifique se o nome do arquivo está certo.</p>`;
   }
 }
+
 
 // -------------------- SPA LINKS --------------------
 document.addEventListener("DOMContentLoaded", async () => {
