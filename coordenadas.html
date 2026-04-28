@@ -2,9 +2,7 @@
     <span>Faça login para enviar coordenadas</span>
     <a id="login-a" href="#" data-link="cadastro.html" onclick="loadPage('cadastro.html')">Login</a>
   </div>
-  <button type="button" onclick="inicializarLocalizacao()" class="btn-location">
-    📍 Usar minha localização
-  </button>
+  
   
   <form action="#" method="post" id="form-arvore" class="form-container" style="display: none;">
     <h2>Coordenadas</h2>
@@ -13,6 +11,10 @@
       <label for="name">Nome:</label>
       <input type="text" id="nome" placeholder="Digite seu nome (opcional)" required>
     </div>
+    
+    <button type="button" onclick="inicializarLocalizacao()" class="btn-location">
+      📍 Usar minha localização
+    </button>
   
     <div class="form-group">
       <label for="coordinates">Coordenadas: <br> Use pontos . (Ex: -12.34567, -45.67890)<br>(Latitude, Longitude) </label>
