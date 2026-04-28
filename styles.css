@@ -450,109 +450,134 @@ header #novosapiens{
 }
 
 /* CONTAINER DO FORM */
-.form-container {
-  max-width: 420px;
-  margin: 60px auto;
-  padding: 30px;
+  .form-container {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 30px;
 
-  background: var(--white);
-  border-radius: 16px;
+    background: var(--white);
+    border-radius: 16px;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  font-family: Arial, sans-serif;
-}
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    font-family: Arial, sans-serif;
+  }
 
-/* TÍTULO */
-.form-container h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: var(--primary);
-}
+  /* TÍTULO */
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--primary);
+  }
 
-/* GRUPOS */
-.form-group {
-  margin-bottom: 18px;
-  display: flex;
-  flex-direction: column;
-}
+  /* GRUPOS */
+  .form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+  }
 
-/* LABEL */
-.form-group label {
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: var(--text-dark);
-}
+  /* LABEL */
+  .form-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
 
-/* INPUTS */
-.form-group input {
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  /* INPUTS */
+  .form-group input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
 
-  font-size: 15px;
-  transition: 0.3s;
-}
+    font-size: 15px;
+    transition: 0.3s;
+  }
 
-/* FOCUS */
-.form-group input:focus {
-  border-color: var(--primary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(17, 143, 80, 0.2);
-}
+  /* FOCUS */
+  .form-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(17, 143, 80, 0.2);
+  }
 
-/* CHECKBOX */
-.form-group.checkbox {
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
+  /* CHECKBOX */
+  .form-group.checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
 
-.form-group.checkbox label {
-  margin: 0;
-  font-weight: normal;
-}
+  .form-group.checkbox label {
+    margin: 0;
+    font-weight: normal;
+  }
 
-/* BOTÕES */
-#btns-login {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
+  /* BOTÕES */
+  #btns-login {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
 
-/* BOTÃO BASE */
-.btn-submit {
-  flex: 1;
-  padding: 12px;
+  /* BOTÃO BASE */
+  .btn-submit {
+    flex: 1;
+    padding: 12px;
 
+    border: none;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+  }
+
+  /* LOGIN */
+  .btn-submit:first-child {
+    background: var(--primary);
+    color: var(--white);
+  }
+
+  /* CRIAR CONTA */
+  .btn-submit:last-child {
+    background: var(--secondary);
+    color: var(--text-dark);
+  }
+
+  /* HOVER */
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+
+
+.btn-location{
+     background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
   border: none;
-  border-radius: 10px;
-
-  font-size: 15px;
-  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: block;
+  margin: 20px auto;
+  }
 
-  transition: 0.3s ease;
-}
+  .btn-location:hover{
+    transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  }
 
-/* LOGIN */
-.btn-submit:first-child {
-  background: var(--primary);
-  color: var(--white);
-}
-
-/* CRIAR CONTA */
-.btn-submit:last-child {
-  background: var(--secondary);
-  color: var(--text-dark);
-}
-
-/* HOVER */
-.btn-submit:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-
+  .btn-location:active {
+     transform: scale(0.97);
+  }
 
 
 
@@ -607,4 +632,6 @@ header #novosapiens{
     font-size: 16px;
     text-align: justify;
   }
+
+  
 }
