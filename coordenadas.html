@@ -2,7 +2,7 @@
     <span>Faça login para enviar coordenadas</span>
     <a id="login-a" href="#" data-link="cadastro.html" onclick="loadPage('cadastro.html')">Login</a>
   </div>
-  <button type="button" onclick="obterLocalizacao()" class="btn-location">
+  <button type="button" onclick="inicializarLocalizacao()" class="btn-location">
     📍 Usar minha localização
   </button>
   
@@ -24,20 +24,3 @@
       <button type="submit" class="btn-submit" onclick="salvarArvore(event)">Enviar</button>
     </div>
   </form>
-  
-  <script>
-  // Solicitar localização automaticamente ao carregar a página
-  function obterLocalizacao() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function(position) {
-                document.getElementById('latitude').value = position.coords.latitude;
-                document.getElementById('longitude').value = position.coords.longitude;
-            },
-            function(error) {
-                alert('Não foi possível obter sua localização');
-            }
-        );
-    }
-}
-  </script>
