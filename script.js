@@ -175,6 +175,7 @@ async function checarLogin() {
 
   // Header sempre atualiza
   if (session?.user) {
+    
     loginA.style.display = "none";
     userArea.style.display = "block";
     userName.textContent = session.user.email;
@@ -278,34 +279,49 @@ function falarTexto(texto) {
 // -------------------- SALVAR ÁRVORE --------------------
 async function salvarArvore(event) {
   event.preventDefault();
-
+    
   const nome = document.getElementById('nome').value.trim();
   const latitude = document.getElementById('latitude').value.trim();
   const longitude = document.getElementById('longitude').value.trim();
+  const curso = document.getElementById('curso').value;
 
-  // substitui vírgula por ponto
+
+  
   const latitudePonto = latitude.replace(',', '.');
   const longitudePonto = longitude.replace(',', '.');
+  
+  
+if (!nome) {
+  alert('Preencha o nome antes de enviar!');
+  return;
+}
 
 
-  if (isNaN(latitudePonto) || isNaN(longitudePonto)) { alert('Latitude ou Longitude inválidas!'); return; }
+if (!curso) {
+  alert('Selecione seu curso!');
+  return;
+}
 
-  const latNum = parseFloat(latitudePonto);
-  const lonNum = parseFloat(longitudePonto);
+  if (isNaN(latitudePonto) || isNaN(longitudePonto)) {
+  alert('Latitude ou Longitude inválidas!');
+  return;
+}
 
-  const casasDecimais = (num) => {
-    const partes = num.toString().split('.');
-    return partes[1] ? partes[1].length : 0;
-  };
 
-  if (casasDecimais(latNum) < 5 || casasDecimais(lonNum) < 5) {
-    alert('Latitude e Longitude precisam ter pelo menos 5 casas decimais!');
-    return;
-  }
+const temMinimo5Casas = (valor) => {
+  const partes = valor.split('.');
+  return partes[1] && partes[1].length >= 5;
+};
 
-  const coord = `POINT(${lonNum} ${latNum})`;
+if (!temMinimo5Casas(latitudePonto) || !temMinimo5Casas(longitudePonto)) {
+  alert('Latitude e Longitude precisam ter pelo menos 5 casas decimais!');
+  return;
+}
 
-  const { error } = await supabaseClient.from('arvores').insert([{ nome: nome || null, coord }]);
+const coord = `POINT(${longitudePonto} ${latitudePonto})`;
+
+
+  const { error } = await supabaseClient.from('arvores').insert([{ nome: nome , coord , curso }]);
   if (error) { console.error(error); alert('Erro ao salvar a árvore 😢'); }
   else { alert('Árvore salva 🌱'); document.getElementById('form-arvore').reset(); }
 }
